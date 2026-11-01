@@ -1,0 +1,14 @@
+{
+  "name": "사연이짱",
+  "short_name": "사연이짱",
+  "description": "사연이짱 채널의 모든 사연을 한곳에서",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#14121a",
+  "theme_color": "#14121a",
+  "lang": "ko",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

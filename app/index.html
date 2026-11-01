@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14121a">
+<title>사연이짱</title>
+<meta name="description" content="사연이짱 채널의 모든 사연을 한곳에서 — 최신, 인기, 쇼츠, 찜한 사연, 이어보기">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand" id="brand">
+    <img src="icon.svg" alt="" class="logo">
+    <div>
+      <div class="brand-name">사연이짱</div>
+      <div class="brand-sub" id="brandSub"></div>
+    </div>
+  </div>
+  <button class="icon-btn" id="searchBtn" aria-label="검색">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+  </button>
+</header>
+
+<div class="search-bar" id="searchBar" hidden>
+  <input id="searchInput" type="search" placeholder="제목·내용으로 사연 찾기" autocomplete="off">
+  <button class="text-btn" id="searchClose">닫기</button>
+</div>
+
+<main id="main"></main>
+
+<nav class="tabbar">
+  <button data-view="home" class="active"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>홈</span></button>
+  <button data-view="videos"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg><span>사연</span></button>
+  <button data-view="shorts"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="m11 10 3 2-3 2z"/></svg><span>쇼츠</span></button>
+  <button data-view="saved"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>찜</span></button>
+  <button data-view="history"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>기록</span></button>
+</nav>
+
+<!-- 플레이어 -->
+<section class="player" id="player" hidden>
+  <div class="player-head">
+    <button class="icon-btn" id="playerBack" aria-label="뒤로">
+      <svg viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></svg>
+    </button>
+    <div class="player-kicker" id="playerKicker"></div>
+    <button class="icon-btn" id="playerShare" aria-label="공유">
+      <svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M12 15V4m-4 4 4-4 4 4"/></svg>
+    </button>
+  </div>
+  <div class="frame-wrap" id="frameWrap"></div>
+  <div class="player-body">
+    <h1 id="playerTitle"></h1>
+    <div class="meta" id="playerMeta"></div>
+    <div class="actions">
+      <button class="chip" id="saveBtn"></button>
+      <a class="chip" id="ytLink" target="_blank" rel="noopener">유튜브에서 보기</a>
+    </div>
+    <p class="desc" id="playerDesc"></p>
+    <h2 class="sec-title">다음 사연</h2>
+    <div class="list" id="nextList"></div>
+  </div>
+</section>
+
+<script src="videos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
