@@ -1,0 +1,32 @@
+사연이짱 앱 — 구글 플레이 등록 절차 (2026-11-02 기준)
+
+■ 준비된 것
+- 5-sayeon-release-v1.0.0.aab  : Play Console에 올릴 파일 (버전코드 1, 패키지 kr.sayeonjjang.app)
+- 6-테스트용-...apk            : 폰에 직접 설치해 미리 확인하는 용도 (스토어에는 올리지 않음)
+- 1-앱아이콘-512.png, 2-그래픽이미지-1024x500.png, 3-스크린샷-1~3.png, 4-스토어-설명글.txt
+- 개인정보처리방침: https://ykwanghee-lab.github.io/sayeon-app/privacy.html
+- 서명 키: D:\00_WORK\sayeon-twa\signing\  (signing-info.txt 에 비밀번호. 절대 분실·공개 금지)
+
+■ Play Console 순서
+1. https://play.google.com/console → 앱 만들기 → 이름 "사연이짱 - 인생 사연 모아보기", 앱, 무료
+2. 대시보드 "앱 설정" 항목 전부 작성
+   - 개인정보처리방침 URL 입력
+   - 앱 액세스 권한: 제한 없음 / 광고: 없음 / 콘텐츠 등급 설문 / 타겟층: 18세 이상
+   - 데이터 보안: 수집·공유 데이터 없음
+3. 기본 스토어 등록정보: 4-스토어-설명글.txt 내용, 아이콘·그래픽·스크린샷 업로드
+4. 프로덕션(또는 내부 테스트) → 새 버전 만들기 → 5-...aab 업로드 → 출시 노트 → 검토 후 출시
+5. ★ AAB 업로드 후 반드시: 설정 → 앱 무결성 → "앱 서명 키 인증서"의 SHA-256 지문을 복사해
+   D:\00_WORK\000_앱개발\수능장소검색\ykwanghee-lab.github.io\.well-known\assetlinks.json 의
+   kr.sayeonjjang.app 항목 sha256_cert_fingerprints 에 추가 후 푸시.
+   (지금은 업로드 키 지문 8F:83:2F:...만 들어 있음. 이걸 안 하면 설치한 앱 위에 브라우저 주소창이 뜸)
+
+■ 다음 버전을 올릴 때
+- D:\00_WORK\sayeon-twa\twa-manifest.json 의 appVersionCode +1, appVersionName 수정
+- app\build.gradle 의 versionCode / versionName 도 같이 수정
+- PowerShell에서:
+    cd D:\00_WORK\sayeon-twa
+    $env:JAVA_HOME="C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot"
+    $env:ANDROID_HOME="D:\00_WORK\000_앱개발\android-sdk"
+    .\gradlew.bat bundleRelease
+    & "C:\Program Files\Eclipse Adoptium\jdk-17.0.20.101-hotspot\bin\jarsigner.exe" -sigalg SHA256withRSA -digestalg SHA-256 -keystore signing\sayeon.keystore app\build\outputs\bundle\release\app-release.aab sayeon
+- 앱 내용(화면·기능)은 웹을 고치면 바로 반영되므로 스토어 재업로드가 필요 없음. 아이콘·이름·패키지 변경 때만 재빌드.
