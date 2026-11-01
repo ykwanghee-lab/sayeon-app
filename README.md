@@ -19,7 +19,12 @@ python -m http.server 8787 --directory app
 ```
 → http://localhost:8787
 
-## 영상 목록 갱신 (새 영상 올렸을 때)
+## 자동 갱신
+`.github/workflows/update.yml` 이 매일 05:00(KST) `scripts/update.py` 를 돌려 새 영상을 받고 gh-pages 로 재배포한다.
+GitHub 저장소 → Actions → "영상 목록 자동 갱신" → Run workflow 로 즉시 실행 가능.
+
+## 영상 목록 수동 갱신
 ```
-python scripts/fetch.py
+python scripts/update.py     # 증분(빠름)
+python scripts/fetch.py      # 전체 새로 받기(느림, 좋아요 수 등 상세 포함)
 ```
