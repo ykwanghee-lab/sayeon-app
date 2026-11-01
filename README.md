@@ -2,6 +2,11 @@
 
 유튜브 `@사연이짱` 채널의 영상을 웹툰 앱처럼 모아 보는 모바일 우선 웹앱(PWA).
 
+## 배포 주소
+https://ykwanghee-lab.github.io/sayeon-app/  (GitHub Pages · gh-pages 브랜치 = app/ 폴더)
+
+재배포: `git subtree push --prefix app origin gh-pages`
+
 ## 폴더
 - `app/` — 앱 본체 (정적 HTML/CSS/JS). 이 폴더를 그대로 호스팅하면 됨.
 - `data/` — yt-dlp 가 받은 원본 메타데이터 (jsonl)
